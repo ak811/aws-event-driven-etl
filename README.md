@@ -13,7 +13,7 @@ This project demonstrates an end-to-end **serverless** data processing pipeline 
 
 ---
 
-## 1) Amazon S3 Bucket Structure 🪣
+## 1) Amazon S3 Bucket Structure
 
 Create a bucket and three prefixes to organize data:
 - `raw/` — incoming raw files
@@ -31,7 +31,7 @@ aws s3 cp orders.csv s3://serverless-data-analytics-bucket/raw/orders.csv
 
 ---
 
-## 2) IAM Roles and Permissions 🔐
+## 2) IAM Roles and Permissions
 
 Create three roles with managed policies:
 
@@ -53,7 +53,7 @@ Create three roles with managed policies:
 
 ---
 
-## 3) Lambda Function ⚙️
+## 3) Lambda Function
 
 Create a Lambda function that filters orders (drops `pending`/`cancelled` older than 30 days) and writes to `processed/`.
 
@@ -86,7 +86,7 @@ Upload a new raw file (e.g., `orders_2.csv`) to trigger Lambda. Confirm the outp
 
 ---
 
-## 4) AWS Glue Crawler 🕸️
+## 4) AWS Glue Crawler
 
 Create a database and crawler to catalog the processed data:
 
@@ -104,7 +104,7 @@ Run the crawler and verify a table appears in `orders_db` (columns for `orderid`
 
 ---
 
-## 5) Query Data with Athena 🔍
+## 5) Query Data with Athena
 
 In **Athena (Trino)**:
 - **Data source:** `AwsDataCatalog`
@@ -175,7 +175,7 @@ LIMIT 10;
 
 ---
 
-## 6) EC2 Web Server 🖥️
+## 6) EC2 Web Server
 
 Launch an **Amazon Linux 2023** `t2.micro` with security group rules:
 - **SSH** — `22` from **My IP**
@@ -202,7 +202,7 @@ Open the dashboard at: **`http://13.223.188.161:5000`**.
 
 ---
 
-## Notes & Troubleshooting 🧩
+## Notes & Troubleshooting
 
 - **Lambda didn’t trigger?** Ensure the S3 trigger exists, correct bucket, `Prefix=raw/`, `Suffix=.csv`.
 - **No processed file?** Upload a *new* object to `raw/` (events don’t retro-trigger). Check CloudWatch logs.
