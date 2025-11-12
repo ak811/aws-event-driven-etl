@@ -1,8 +1,7 @@
-# ITCS-6190 Assignment 3: AWS Data Processing Pipeline (Complete Submission)
+# AWS Serverless Data Analytics Pipeline
 
 This project demonstrates an end-to-end **serverless** data processing pipeline on AWS. The workflow ingests raw data into S3, processes it with a Lambda function, catalogs it with AWS Glue, queries it with Amazon Athena, and displays the results on a simple Flask webpage hosted on an EC2 instance.
 
-> **Your setup (filled in):**
 > - **Bucket:** `serverless-data-analytics-bucket`
 > - **Region:** `us-east-1`
 > - **Glue Database:** `orders_db`
@@ -125,7 +124,7 @@ SELECT
 FROM orders_db."<TABLE_NAME>";
 ```
 
-### 5.2 Assignment Queries (produce CSVs in `enriched/`)
+### 5.2 Queries (produce CSVs in `enriched/`)
 1) **Total Sales by Customer**
 ```sql
 SELECT customer, SUM(amount) AS totalamountspent
@@ -203,27 +202,6 @@ Open the dashboard at: **`http://13.223.188.161:5000`**.
 
 ---
 
-## Submission Checklist ✅
-
-- [ ] **S3 structure** screenshot at bucket root showing `raw/`, `processed/`, `enriched/`  
-  `screenshots/01-s3-structure.png`
-- [ ] **IAM roles** screenshot  
-  `screenshots/02-iam-roles.png`
-- [ ] **Lambda overview** screenshot  
-  `screenshots/03-lambda-overview.png`
-- [ ] **Lambda trigger** screenshot  
-  `screenshots/04-lambda-trigger.png`
-- [ ] **Processed CSV** in `processed/` screenshot  
-  `screenshots/05-processed-folder.png`
-- [ ] **Glue crawler CloudWatch logs** screenshot  
-  `screenshots/06-glue-crawler-cloudwatch.png`
-- [ ] **Athena CSVs** in `enriched/` screenshot  
-  `screenshots/07-athena-enriched.png`
-- [ ] **Final webpage** running on EC2 screenshot  
-  `screenshots/08-final-webpage.png`
-
----
-
 ## Notes & Troubleshooting 🧩
 
 - **Lambda didn’t trigger?** Ensure the S3 trigger exists, correct bucket, `Prefix=raw/`, `Suffix=.csv`.
@@ -234,14 +212,14 @@ Open the dashboard at: **`http://13.223.188.161:5000`**.
 
 ---
 
-## Repo Structure
+## Repository Structure
 
 ```
 aws-serverless-data-analytics-pipeline/
 ├─ LambdaFunction.py
-├─ EC2InstanceNANOapp..py
+├─ EC2InstanceNANOapp.py
 ├─ orders.csv
-├─ README.md   ← (this file)
+├─ README.md
 └─ screenshots/
    ├─ 01-s3-structure.png
    ├─ 02-iam-roles.png
@@ -252,5 +230,3 @@ aws-serverless-data-analytics-pipeline/
    ├─ 07-athena-enriched.png
    └─ 08-final-webpage.png
 ```
-
-> Place your screenshots into the `screenshots/` folder with the exact filenames above so the images render on GitHub.
