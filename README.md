@@ -16,9 +16,9 @@ This project demonstrates an end-to-end **serverless** data processing pipeline 
 ## 1) Amazon S3 Bucket Structure
 
 Create a bucket and three prefixes to organize data:
-- `raw/` — incoming raw files
-- `processed/` — Lambda output (filtered/cleaned CSVs)
-- `enriched/` — Athena query result CSVs
+- `raw/`: incoming raw files
+- `processed/`: Lambda output (filtered/cleaned CSVs)
+- `enriched/`: Athena query result CSVs
 
 **Screenshot:**  
 ![S3 Bucket Structure](screenshots/01-s3-structure.png)  
@@ -178,8 +178,8 @@ LIMIT 10;
 ## 6) EC2 Web Server
 
 Launch an **Amazon Linux 2023** `t2.micro` with security group rules:
-- **SSH** — `22` from **My IP**
-- **Custom TCP** — `5000` from **0.0.0.0/0**
+- **SSH**: `22` from **My IP**
+- **Custom TCP**: `5000` from **0.0.0.0/0**
 - Attach IAM profile **`EC2-Athena-Dashboard-Role`**
 
 SSH into EC2, install deps, and run the Flask app:
